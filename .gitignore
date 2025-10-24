@@ -1,0 +1,42 @@
+# Build and IDE files
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+*.ninja
+*.swp
+*.swo
+*.user
+*.o
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# Binaries
+*.exe
+*.out
+*.a
+*.lib
+*.so
+*.dll
+*.dSYM/
+*.mod
+*.bin
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Tests, coverage, etc.
+*.gcda
+*.gcno
+*.gcov
