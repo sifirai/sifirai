@@ -1,7 +1,7 @@
 # sifirai — A Modern GenAI Engine
 
-> **CPU-first. GPU-optional. No legacy baggage.**  
-> Built for clarity, performance, and control.
+**CPU-first. GPU-optional. No legacy baggage.**  
+Built for clarity, performance, and control.
 
 
 ### What is `sifirai`?
@@ -27,7 +27,7 @@ Nodes can *think, act, and communicate* — enabling modular, composable AI syst
 - **Transparent design** — every abstraction earns its right to exist.  
 
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 | Layer | Technology |
 |-------|-------------|
