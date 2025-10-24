@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
 project(sifirai LANGUAGES CXX)
 
-# Enable strict warnings
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+list(PREPEND CMAKE_MODULE_PATH "${sifirai_SOURCE_DIR}/cmake")
+include(utils)
+
+add_subdirectory(src/tensor)
 
 # Treat warnings as errors in Debug builds
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -15,11 +15,15 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     endif()
 endif()
 
-# Build executable
-add_executable(tensor_expand src/main.cpp)
+# Main binary (for now)
+add_executable(sifirai src/main.cpp)
+target_link_libraries(sifirai PRIVATE sifirai::tensor)
 
 # Enable faster build flags for Release
-target_compile_options(tensor_expand PRIVATE
+target_compile_options(sifirai PRIVATE
     $<$<CONFIG:Release>:-O3 -march=native>
     $<$<CONFIG:RelWithDebInfo>:-O2>
 )
+
+sifirai_target_properties(sifirai)
+
