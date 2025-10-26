@@ -1,3 +1,5 @@
+# NOTE: the development just started, not functional yet. Under heavy development.
+
 # sifirai — A Modern GenAI Engine
 
 **CPU-first. GPU-optional. No legacy baggage.**  
