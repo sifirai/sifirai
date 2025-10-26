@@ -1,29 +1,18 @@
-cmake_minimum_required(VERSION 3.25)
-project(sifirai LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.28)
+project(sifirai CXX)
 
-list(PREPEND CMAKE_MODULE_PATH "${sifirai_SOURCE_DIR}/cmake")
-include(utils)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(src/tensor)
+# add deps
+include_directories(${CMAKE_SOURCE_DIR}/sai-deps/argparse/include)
 
-# Treat warnings as errors in Debug builds
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    if (MSVC)
-        add_compile_options(/W4 /WX)
-    else()
-        add_compile_options(-Wall -Wextra -Wpedantic -Werror)
-    endif()
-endif()
+# Add submodules
+add_subdirectory(sai-libs)
 
-# Main binary (for now)
-add_executable(sifirai src/main.cpp)
-target_link_libraries(sifirai PRIVATE sifirai::tensor)
-
-# Enable faster build flags for Release
-target_compile_options(sifirai PRIVATE
-    $<$<CONFIG:Release>:-O3 -march=native>
-    $<$<CONFIG:RelWithDebInfo>:-O2>
+add_executable(hello main.cxx)
+target_link_libraries(hello 
+    PRIVATE
+    sai::core
 )
-
-sifirai_target_properties(sifirai)
-
